@@ -129,7 +129,8 @@ def readBME280All(addr=DEVICE):
   hum_raw = (data[6] << 8) | data[7]
 
   #Refine temperature
-  var1 = ((((temp_raw>>3)-(dig_T1<<1)))*(dig_T2)) >> 11  var2 = (((((temp_raw>>4) - (dig_T1)) * ((temp_raw>>4) - (dig_T1))) >> 12) * (dig_T3)) >> 14
+  var1 = ((((temp_raw>>3)-(dig_T1<<1)))*(dig_T2)) >> 11
+  var2 = (((((temp_raw>>4) - (dig_T1)) * ((temp_raw>>4) - (dig_T1))) >> 12) * (dig_T3)) >> 14
   t_fine = var1+var2
   temperature = float(((t_fine * 5) + 128) >> 8);
 
@@ -168,7 +169,8 @@ def main():
 
   temperature,pressure,humidity = readBME280All()
 
-  print ("{} {:0.1f} {:0.1f} {:0.2f}".format(datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S'),humidity + humidity_adj,temperature,pressure))
+  if datetime.date.today().year != 1970:
+    print ("{} {:0.1f} {:0.1f} {:0.2f}".format(datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S'),humidity + humidity_adj,temperature,pressure))
 
 #  print "Temperature : ", temperature, "C"
 #  print "Pressure : ", pressure, "hPa"
