@@ -24,6 +24,10 @@ from ctypes import c_short
 from ctypes import c_byte
 from ctypes import c_ubyte
 
+# Humidity adjustment value. Positive value will be added.
+# Negative will be substracted
+humidity_adj = +5
+
 DEVICE = 0x76 # Default device I2C address
 
 
@@ -165,7 +169,7 @@ def main():
 
   print "Temperature : ", temperature, "C"
   print "Pressure : ", pressure, "hPa"
-  print "Humidity : ", humidity, "%"
+  print "Humidity : ", humidity + humidity_adj, "%"
 
 if __name__=="__main__":
    main()
