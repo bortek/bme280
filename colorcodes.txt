@@ -1,0 +1,6 @@
+My own bme280 RH adjustment values
+
+blue=+3%
+yellow=+2%
+green=-2%
+white=0%
