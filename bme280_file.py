@@ -17,6 +17,9 @@
 #
 # http://www.raspberrypi-spy.co.uk/
 #
+# Modified for personal use by
+# https://github.com/bortek
+# 
 #--------------------------------------
 import smbus
 import time
@@ -25,9 +28,10 @@ from ctypes import c_byte
 from ctypes import c_ubyte
 import datetime
 
-# Humidity adjustment value. Positive value will be added.
+# Humidity  & temp adjustment value. Positive value will be added.
 # Negative will be substracted
-humidity_adj = +5
+humidity_adj = +0
+temperature_adj = +0
 
 DEVICE = 0x76 # Default device I2C address
 
@@ -170,7 +174,7 @@ def main():
   temperature,pressure,humidity = readBME280All()
 
   if datetime.date.today().year != 1970:
-    print ("{} {:0.1f} {:0.1f} {:0.2f}".format(datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S'),humidity + humidity_adj,temperature,pressure))
+    print ("{} {:0.1f} {:0.1f} {:0.2f}".format(datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S'),humidity + humidity_adj,temperature + temperature_adj,pressure))
 
 #  print "Temperature : ", temperature, "C"
 #  print "Pressure : ", pressure, "hPa"
