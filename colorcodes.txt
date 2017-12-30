@@ -1,6 +1,8 @@
 My own bme280 RH adjustment values
 
-blue=+3%
+blue=+2.5%
 yellow=+2%
-green=-2%
-white=0%
+(kl_livingroom_1)green=-1%,t-0.5
+(kl_pingisrum_1)white=0%,t-0.5
+violet=+3.5%
+(kl_backside_2)red=+2.5%
